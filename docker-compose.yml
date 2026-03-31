@@ -1,0 +1,15 @@
+services:
+  web:
+    build: ./nginx
+    ports:
+      - "8080:80"
+    depends_on:
+      - cache
+
+  cache:
+    image: redis:alpine
+    volumes:
+      - redis_data:/data
+
+volumes:
+  redis_data:
